@@ -1,0 +1,47 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  ans1: MyString
+  ans2: MyString
+  ans3: MyString
+  ans4: MyString
+  ans5: MyString
+  ans6: MyString
+  ans7: MyString
+  ans8: MyString
+  ans9: MyString
+  ans10: MyString
+  ans11: MyString
+  ans12: MyString
+  ans13: MyString
+  ans14: MyString
+  ans15: MyString
+  ans16: MyString
+  ans17: MyString
+  ans18: MyString
+  ans19: MyString
+  ans20: MyString
+
+two:
+  name: MyString
+  ans1: MyString
+  ans2: MyString
+  ans3: MyString
+  ans4: MyString
+  ans5: MyString
+  ans6: MyString
+  ans7: MyString
+  ans8: MyString
+  ans9: MyString
+  ans10: MyString
+  ans11: MyString
+  ans12: MyString
+  ans13: MyString
+  ans14: MyString
+  ans15: MyString
+  ans16: MyString
+  ans17: MyString
+  ans18: MyString
+  ans19: MyString
+  ans20: MyString

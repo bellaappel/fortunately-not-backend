@@ -15,8 +15,8 @@ class EightballsController < ApplicationController
 
   # POST /eightballs
   def create
-    @eightball = Eightball.new(eightball_params)
-
+    @creator = Creator.find_or_create_by(name: eightball_params[:creator_name])
+    @eightball = Eightball.new(name: eightball_params[:name], pos: eightball_params[:pos], neg: eightball_params[:neg], vague: eightball_params[:vague], creator_id: @creator.id)
     if @eightball.save
       render json: @eightball, status: :created, location: @eightball
     else
@@ -46,6 +46,6 @@ class EightballsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def eightball_params
-      params.require(:eightball).permit(:name, :ans1, :ans2, :ans3, :ans4, :ans5, :ans6, :ans7, :ans8, :ans9, :ans10, :ans11, :ans12, :ans13, :ans14, :ans15, :ans16, :ans17, :ans18, :ans19, :ans20)
+      params.require(:eightball).permit(:name, :pos, :neg, :vague, :creator_name)
     end
 end

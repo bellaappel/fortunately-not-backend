@@ -15,8 +15,11 @@ class EightballsController < ApplicationController
 
   # POST /eightballs
   def create
+    
     @creator = Creator.find_or_create_by(name: eightball_params[:creator_name])
+    
     @eightball = Eightball.new(name: eightball_params[:name], pos: eightball_params[:pos], neg: eightball_params[:neg], vague: eightball_params[:vague], creator_id: @creator.id)
+  
     if @eightball.save
       render json: @eightball, status: :created, location: @eightball
     else
@@ -25,13 +28,14 @@ class EightballsController < ApplicationController
   end
 
   # PATCH/PUT /eightballs/1
-  def update
-    if @eightball.update(eightball_params)
-      render json: @eightball
-    else
-      render json: @eightball.errors, status: :unprocessable_entity
-    end
-  end
+  # def update
+  #   @creator = Creator.find_or_create_by(name: eightball_params[:creator_name])
+  #     if @eightball.update(name: eightball_params[:name], pos: eightball_params[:pos], neg: eightball_params[:neg], vague: eightball_params[:vague], creator_id: @creator.id)
+  #     render json: @eightball
+  #   else
+  #     render json: @eightball.errors, status: :unprocessable_entity
+  #   end
+  # end
 
   # DELETE /eightballs/1
   def destroy
@@ -46,6 +50,6 @@ class EightballsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def eightball_params
-      params.require(:eightball).permit(:name, :pos, :neg, :vague, :creator_name)
+      params.require(:eightball).permit!
     end
 end

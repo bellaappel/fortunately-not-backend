@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 2021_04_14_190612) do
     t.string "pos"
     t.string "neg"
     t.string "vague"
+    t.index ["neg"], name: "index_eightballs_on_neg"
+    t.index ["pos"], name: "index_eightballs_on_pos"
+    t.index ["vague"], name: "index_eightballs_on_vague"
   end
 
 end

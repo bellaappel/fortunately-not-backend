@@ -5,7 +5,7 @@ class EightballsController < ApplicationController
   def index
     @eightballs = Eightball.all
 
-    render json: @eightballs
+    render json: @eightballs, include: [:creator]
   end
 
   # GET /eightballs/1
@@ -15,8 +15,9 @@ class EightballsController < ApplicationController
 
   # POST /eightballs
   def create
+  
     
-    @creator = Creator.find_or_create_by(name: eightball_params[:creator_name])
+    @creator = Creator.find_or_create_by(name: params[:creator_name])
     
     @eightball = Eightball.new(name: eightball_params[:name], pos: eightball_params[:pos], neg: eightball_params[:neg], vague: eightball_params[:vague], creator_id: @creator.id)
   
@@ -39,7 +40,13 @@ class EightballsController < ApplicationController
 
   # DELETE /eightballs/1
   def destroy
-    @eightball.destroy
+    if @eightball.destroy 
+       @eightballs = Eightball.all
+      render json: @eightballs, include: [:creator]
+    else
+      render json: @eightball.errors, status: :unprocessable_entity
+    end
+        
   end
 
   private

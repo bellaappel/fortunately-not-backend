@@ -4,8 +4,6 @@ class EightballsController < ApplicationController
   # GET /eightballs
   def index
     @eightballs = Eightball.all
-    byebug
-
     render json: @eightballs, include: [:creator]
   end
 

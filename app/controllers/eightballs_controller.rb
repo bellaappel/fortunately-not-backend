@@ -4,6 +4,7 @@ class EightballsController < ApplicationController
   # GET /eightballs
   def index
     @eightballs = Eightball.all
+    byebug
 
     render json: @eightballs, include: [:creator]
   end
@@ -43,8 +44,7 @@ class EightballsController < ApplicationController
     if @eightball.destroy 
        @eightballs = Eightball.all
       render json: @eightballs, include: [:creator]
-    else
-      render json: @eightball.errors, status: :unprocessable_entity
+    else render json: @eightball.errors, status: :unprocessable_entity
     end
         
   end
